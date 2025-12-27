@@ -6,8 +6,26 @@
     <title>World Bank - Международный Банк</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Firebase SDK (стабильная версия) -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js"></script>
+<!-- Firebase SDK -->
+<script>
+    // Загрузка через альтернативный CDN
+    (function() {
+        if (typeof firebase !== 'undefined') return;
+        
+        console.log('Загружаю Firebase 9.22.0...');
+        var scripts = [
+            'https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-database.min.js'
+        ];
+        
+        scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = false;
+            document.head.appendChild(script);
+        });
+    })();
+</script>
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts для красивого шрифта -->
@@ -4491,4 +4509,5 @@
 </body>
 
 </html>
+
 
