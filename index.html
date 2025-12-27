@@ -2256,30 +2256,33 @@
 
         // ==================== ИНИЦИАЛИЗАЦИЯ FIREBASE ====================
         async function initializeFirebase() {
-            try {
-                // Проверяем, инициализирован ли Firebase
-                if (!firebase.apps.length) {
-                    firebaseApp = firebase.initializeApp(firebaseConfig);
-                } else {
-                    firebaseApp = firebase.app();
-                }
-                
-                firebaseDatabase = firebase.database();
-                databaseRef = firebaseDatabase.ref('worldBank');
-                
-                console.log("Firebase инициализирован");
-                updateSyncStatus('connected');
-                
-                // Слушаем изменения в базе данных
-                setupFirebaseListeners();
-                
-            } catch (error) {
-                console.error("Ошибка инициализации Firebase:", error);
-                updateSyncStatus('disconnected');
-                syncEnabled = false;
-                showMessage("⚠️ Синхронизация отключена. Работаем в офлайн-режиме.", "error");
-            }
+    try {
+        console.log('🔄 Инициализация Firebase...');
+        
+        // Проверяем, загружен ли Firebase
+        if (typeof firebase === 'undefined') {
+            throw new Error('Firebase SDK не загружен');
         }
+        
+        // Инициализируем Firebase
+        firebaseApp = firebase.initializeApp(firebaseConfig);
+        firebaseDatabase = firebase.database();
+        databaseRef = firebaseDatabase.ref('worldBank');
+        
+        console.log('✅ Firebase инициализирован');
+        updateSyncStatus('connected');
+        
+        // Слушаем изменения
+        setupFirebaseListeners();
+        
+    } catch (error) {
+        console.error("❌ Ошибка инициализации Firebase:", error);
+        updateSyncStatus('disconnected');
+        syncEnabled = false;
+        showMessage("⚠️ Firebase не загружен. Работаем в офлайн-режиме.", "error");
+    }
+}
+    
 
         // ==================== НАСТРОЙКА СЛУШАТЕЛЕЙ FIREBASE ====================
         function setupFirebaseListeners() {
@@ -4488,3 +4491,4 @@
 </body>
 
 </html>
+
