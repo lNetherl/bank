@@ -4505,9 +4505,44 @@
             allTransactionsDiv.innerHTML = html;
         }
     </script>
+</body><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Мой проект</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Ваша страница</h1>
+    
+    <!-- Ваш контент здесь -->
+    
+    <!-- Firebase конфиг -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLTca8RAf7iH__n59bamrhvSKL6biGgRg",
+            authDomain: "national-banks.firebaseapp.com",
+            databaseURL: "https://national-banks-default-rtdb.firebaseio.com",
+            projectId: "national-banks",
+            storageBucket: "national-banks.firebasestorage.app",
+            messagingSenderId: "778858264268",
+            appId: "1:778858264268:web:7af66dfb1f38ac8dd77469",
+            measurementId: "G-WICBMSSQVH"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        console.log("✅ Firebase подключен!");
+        window.db = database;
+    </script>
 </body>
+</html>
 
 </html>
+
 
 
 
